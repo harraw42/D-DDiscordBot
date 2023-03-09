@@ -57,21 +57,25 @@ async def roll(ctx,*args):
     dice_number = args[i] + args[i+1]
     await ctx.channel.send(dice_number)
 
-#@bot.command(name = "tavern")
-#async def tavern(ctx):
-  #tavernmusic = "[Tavern Music](https://www.youtube.com/watch?v=EULoybB2Nsw)."
-  #await ctx.channel.send(tavernmusic)
+@bot.command(name = "tavern")
+async def tavern(ctx):
+  tavernmusic = "[Tavern Music](https://www.youtube.com/watch?v=EULoybB2Nsw)."
+  await ctx.channel.send(tavernmusic)
 
-##@bot.command(name = "journey")
-#async def journey(ctx):
-  #journeymusic = "[Journey Music](https://www.youtube.com/watch?v=A8qMyBWZNw0)."
-  #await ctx.channel.send(journeymusic)
+@bot.command(name = "journey")
+async def journey(ctx):
+  journeymusic = "[Journey Music](https://www.youtube.com/watch?v=A8qMyBWZNw0)."
+  await ctx.channel.send(journeymusic)
 
-#@bot.command(name = "battle")
-#async def battle(ctx):
-  #battlemusic = "[Battle Music](https://www.youtube.com/watch?v=A48QqpWKWG8)."
-  #await ctx.channel.send(battlemusic)
+@bot.command(name = "battle")
+async def battle(ctx):
+  battlemusic = "[Battle Music](https://www.youtube.com/watch?v=A48QqpWKWG8)."
+  await ctx.channel.send(battlemusic)
 
+@bot.command(name = "ambient")
+async def ambient(ctx):
+  ambientmusic = "[Ambient Music](https://www.youtube.com/watch?v=CahOLfYxiq0)."
+  await ctx.channel.send(ambientmusic)
 
 
 
