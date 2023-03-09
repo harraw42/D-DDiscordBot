@@ -1,15 +1,14 @@
+import os
 import discord
 import random
 from discord.ext import commands
 
-TOKEN = "MTA4MjA3MTcwMzQzMTE3MjE4Ng.Guo-sb.oADsSGCTc7OsYLQTmAYMGK4qHbmxtgbLrkFQ3A"
+TOKEN = os.environ['Token']
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 bot = commands.Bot(command_prefix="*", intents=intents)
-
-initiative_order = [""]
 
 @bot.command(name="d4")
 async def rolld4(ctx):
@@ -56,26 +55,22 @@ async def roll(ctx,*args):
     print(args[i].split(","))
     print(args[0])
     dice_number = args[i] + args[i+1]
-    print(dice_number)
+    await ctx.channel.send(dice_number)
 
+#@bot.command(name = "tavern")
+#async def tavern(ctx):
+  #tavernmusic = "[Tavern Music](https://www.youtube.com/watch?v=EULoybB2Nsw)."
+  #await ctx.channel.send(tavernmusic)
 
+##@bot.command(name = "journey")
+#async def journey(ctx):
+  #journeymusic = "[Journey Music](https://www.youtube.com/watch?v=A8qMyBWZNw0)."
+  #await ctx.channel.send(journeymusic)
 
-@bot.event
-async def on_message(ctx, message):
-  if "tavern" in message.content:
-    await ctx.channel.send("https://www.youtube.com/watch?v=EULoybB2Nsw")
-    await ctx.channel.send("https://www.youtube.com/watch?v=VZYr1eyC81g")
-  elif "journey" in message.content:
-    await ctx.channel.send("https://www.youtube.com/watch?v=A8qMyBWZNw0")
-  elif "battle" in message.content:
-    await ctx.channel.send("https://www.youtube.com/watch?v=A48QqpWKWG8")
-
-
-
-
-
-
-
+#@bot.command(name = "battle")
+#async def battle(ctx):
+  #battlemusic = "[Battle Music](https://www.youtube.com/watch?v=A48QqpWKWG8)."
+  #await ctx.channel.send(battlemusic)
 
 
 
