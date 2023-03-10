@@ -62,10 +62,10 @@ async def tavern(ctx):
   tavernmusic = "[Tavern Music](https://www.youtube.com/watch?v=EULoybB2Nsw)."
   await ctx.channel.send(tavernmusic)
 
-@bot.command(name = "journey")
-async def journey(ctx):
-  journeymusic = "[Journey Music](https://www.youtube.com/watch?v=A8qMyBWZNw0)."
-  await ctx.channel.send(journeymusic)
+@bot.command(name = "travel")
+async def travel(ctx):
+  travelmusic = "[Travel Music](https://www.youtube.com/watch?v=A8qMyBWZNw0)."
+  await ctx.channel.send(travelmusic)
 
 @bot.command(name = "battle")
 async def battle(ctx):
@@ -76,6 +76,8 @@ async def battle(ctx):
 async def ambient(ctx):
   ambientmusic = "[Ambient Music](https://www.youtube.com/watch?v=CahOLfYxiq0)."
   await ctx.channel.send(ambientmusic)
+
+
 
 
 
