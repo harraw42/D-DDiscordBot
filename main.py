@@ -48,14 +48,12 @@ async def rolld100(ctx):
 @bot.command(name="roll")
 async def roll(ctx,*args):
   args = list(args)
-  print(args)
-  for i in range(len(args)):
-    if "," not in args[i]:
-      args[i] = args[i] + ",1"
-    print(args[i].split(","))
-    print(args[0])
-    dice_number = args[i] + args[i+1]
-    await ctx.channel.send(dice_number)
+  num = args[0]
+  die = args[1]
+  for i in range(len(num)):
+    dice_total = int(num) * int(die[1:]) #string comprehension, gets rid of "d"
+    dice_outcome = random.randint(1, dice_total)
+    await ctx.channel.send(f"Rolling {num}{die}: {dice_outcome}")
 
 @bot.command(name = "tavern")
 async def tavern(ctx):
@@ -77,8 +75,9 @@ async def ambient(ctx):
   ambientmusic = "[Ambient Music](https://www.youtube.com/watch?v=CahOLfYxiq0)."
   await ctx.channel.send(ambientmusic)
 
-
-
-
+@bot.command(name = "pregame")
+async def pregame(ctx):
+  pregamemusic = "[Pregame Music](https://www.youtube.com/watch?v=FFfdyV8gnWk)."
+  await ctx.channel.send(pregamemusic)
 
 bot.run(TOKEN)
