@@ -50,63 +50,63 @@ async def commands(ctx):
 @bot.command(name="d4")
 async def rolld4(ctx):
   d4 = random.randint(1, 4)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d4: 
-  {d4}'''
+  {d4}```
   """)
 
 #d6
 @bot.command(name="d6")
 async def rolld6(ctx):
   d6 = random.randint(1, 6)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d6: 
-  {d6}'''
+  {d6}```
   """)
 
 #d8
 @bot.command(name="d8")
 async def rolld8(ctx):
   d8 = random.randint(1, 8)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d8: 
-  {d8}'''
+  {d8}```
   """)
 
 #d10
 @bot.command(name="d10")
 async def rolld10(ctx):
   d10 = random.randint(1, 10)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d10: 
-  {d10}'''
+  {d10}```
   """)
 
 #d12
 @bot.command(name="d12")
 async def rolld12(ctx):
   d12 = random.randint(1, 12)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d12: 
-  {d12}'''
+  {d12}```
   """)
 
 #d20
 @bot.command(name="d20")
 async def rolld20(ctx):
   d20 = random.randint(1, 20)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d20: 
-  {d20}'''
+  {d20}```
   """)
 
 #d100
 @bot.command(name="d100")
 async def rolld100(ctx):
   d100 = random.randint(1, 100)
-  await ctx.channel.send(f"""'''
+  await ctx.channel.send(f"""```
   Rolling a d100: 
-  {d100}'''
+  {d100}```
   """)
 
 @bot.command(name="roll")
@@ -117,9 +117,9 @@ async def roll(ctx,*args):
   for i in range(len(num)):
     dice_total = int(num) * int(die[1:]) #string comprehension, gets rid of "d"
     dice_outcome = random.randint(1, dice_total)
-    await ctx.channel.send(f"""'''
+    await ctx.channel.send(f"""```
     Rolling {num}{die}: 
-    {dice_outcome}'''
+    {dice_outcome}```
     """)
 
 @bot.command(name = "tavern")
@@ -147,11 +147,21 @@ async def pregame(ctx):
   pregamemusic = "[Pregame Music](https://www.youtube.com/watch?v=FFfdyV8gnWk)."
   await ctx.channel.send(pregamemusic)
 
-"""
 @bot.command(name = "dom")
 async def deckmanythings(ctx):
-  card = dom.iterkeys()
-  print(card)
-"""
+  card, card_desc = random.choice(list(dom.items()))
+  await ctx.channel.send(f"""```
+  {card}:
+  {card_desc}```
+  """)
 
+@bot.command(name = "init")
+async def initiative(ctx):
+  combat_order = {}
+  await ctx.channel.send(f"""```
+  
+  """)
+  
+
+  
 bot.run(TOKEN)
