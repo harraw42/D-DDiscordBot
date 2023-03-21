@@ -13,6 +13,9 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix="*", intents=intents)
 
+combat_order = {}
+
+#list of possible commands command
 @bot.command(name="commands")
 async def commands(ctx):
   await ctx.channel.send("""```
@@ -42,7 +45,9 @@ async def commands(ctx):
 
   *travel - plays travel music
 
-  *ambience - plays ambient music```
+  *ambience - plays ambient music
+  
+  *dom - draws a card from the deck of many things```
   """)
 
 #Define a command for rolling each singular die, with a send command to send "Rolling a {die}" then the result
@@ -109,6 +114,7 @@ async def rolld100(ctx):
   {d100}```
   """)
 
+#rolling multiple dice
 @bot.command(name="roll")
 async def roll(ctx,*args):
   args = list(args)
@@ -122,6 +128,7 @@ async def roll(ctx,*args):
     {dice_outcome}```
     """)
 
+#music commands
 @bot.command(name = "tavern")
 async def tavern(ctx):
   tavernmusic = "[Tavern Music](https://www.youtube.com/watch?v=EULoybB2Nsw)."
@@ -156,12 +163,18 @@ async def deckmanythings(ctx):
   """)
 
 @bot.command(name = "init")
-async def initiative(ctx):
-  combat_order = {}
+async def initiative(ctx, combat_order):
   await ctx.channel.send(f"""```
-  
+  {combat_order.sort()}
   """)
-  
 
-  
+@bot.command(name="addinit")
+async def addinitiative(ctx, *args, combat_order):
+  args = list(args)
+  character = f"{args[1]}: {args[0]}"
+  combat_order.append(character)
+  await ctx.channel.send(f"""```
+  Added {args[0]} to the initiative order.```
+  """)
+
 bot.run(TOKEN)
