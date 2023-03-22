@@ -46,8 +46,14 @@ async def commands(ctx):
   *travel - plays travel music
 
   *ambience - plays ambient music
+
+  *pregame - plays pregame music
   
-  *dom - draws a card from the deck of many things```
+  *dom - draws a card from the deck of many things
+  
+  *adv {enter dice} - rolls advantage
+  
+  *disadv {enter dice} - rolls disadvantage```
   """)
 
 #Define a command for rolling each singular die, with a send command to send "Rolling a {die}" then the result
@@ -128,6 +134,44 @@ async def roll(ctx,*args):
     {dice_outcome}```
     """)
 
+@bot.command(name="adv")
+async def advantage(ctx, *args):
+  args = list(args)
+  die = args[0]
+  choice = []
+  for i in range(2):
+    dice_outcome = random.randint(1, int(die[1:]))
+    choice.append(dice_outcome)
+    await ctx.channel.send(f"""```
+    Rolling a {args[0]}:
+    Outcome {i+1}:
+    {dice_outcome}```
+    """)
+  choice.sort()
+  result = choice[1]
+  await ctx.channel.send(f"""```
+  You have advantage, therefore the result is {result}```
+  """)
+
+@bot.command(name="disadv")
+async def disadvantage(ctx, *args):
+  args = list(args)
+  die = args[0]
+  choice = []
+  for i in range(2):
+    dice_outcome = random.randint(1, int(die[1:]))
+    choice.append(dice_outcome)
+    await ctx.channel.send(f"""```
+    Rolling a {args[0]}:
+    Outcome {i+1}:
+    {dice_outcome}```
+    """)
+  choice.sort(reverse = True)
+  result = choice[1]
+  await ctx.channel.send(f"""```
+  You have disadvantage, therefore the result is {result}```
+  """)
+
 #music commands
 @bot.command(name = "tavern")
 async def tavern(ctx):
@@ -160,21 +204,6 @@ async def deckmanythings(ctx):
   await ctx.channel.send(f"""```
   {card}:
   {card_desc}```
-  """)
-
-@bot.command(name = "init")
-async def initiative(ctx, combat_order):
-  await ctx.channel.send(f"""```
-  {combat_order.sort()}
-  """)
-
-@bot.command(name="addinit")
-async def addinitiative(ctx, *args, combat_order):
-  args = list(args)
-  character = f"{args[1]}: {args[0]}"
-  combat_order.append(character)
-  await ctx.channel.send(f"""```
-  Added {args[0]} to the initiative order.```
   """)
 
 bot.run(TOKEN)
